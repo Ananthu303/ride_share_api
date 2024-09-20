@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "ffd8efb8-0952-46c4-9dde-d77e70ce0db9",
+		"name": "Rider API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26237581"
+	},
+	"item": [
+		{
+			"name": "Get access using refresh",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "refresh",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI2Njc2Mzg4LCJpYXQiOjE3MjY2NzI3ODgsImp0aSI6IjM0MGIyNWUwMDdlZjRkNzI5Mzg0YWZmZTYyNGNiYzZlIiwidXNlcl9pZCI6Mn0.OwYIym0sviEIQQKhQjFu1bIGZCO5L2xU5AsjIlg-tdc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/token/refresh/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "Alexa",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "alex12@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Testpassword@123",
+							"type": "text"
+						},
+						{
+							"key": "user_type",
+							"value": "rider",
+							"type": "text"
+						},
+						{
+							"key": "license_number",
+							"value": "873535",
+							"type": "text"
+						},
+						{
+							"key": "vehicle_number",
+							"value": "KL-07-123",
+							"type": "text"
+						},
+						{
+							"key": "current_location",
+							"value": "Chengannur",
+							"type": "text"
+						},
+						{
+							"key": "phone_number",
+							"value": "9633742277",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/register/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "Alexa",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Testpassword@123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CRUD - Rides for User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI2ODQyNDE1LCJpYXQiOjE3MjY4MjMyMTUsImp0aSI6Ijk2ZTE4ZjZiNjI5MjRkZjQ4MTM0Mzg0OWJmNzI5ZDk0IiwidXNlcl9pZCI6Nn0.d9GUKcuQLFdIpT3wsRBbW6APSN8DRCu7AmXLl2sGjyM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pickup_location",
+							"value": "Chengannur",
+							"type": "text"
+						},
+						{
+							"key": "dropoff_location",
+							"value": "Kottayam",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "cancelled",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/rides/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"rides",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Drivers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI2ODQ0MTk0LCJpYXQiOjE3MjY4MjQ5OTQsImp0aSI6IjE4NDcxMGE1ZTRmNDRmMzI4YjhiMzc5ZDE5MWIxODJlIiwidXNlcl9pZCI6NH0.nEWuJVb0Bez2nFU0oY2g8Y-zgQc8j406PkaB4WAyy-0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "user",
+						"value": "admin",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "current_location",
+							"value": "Chengannur",
+							"type": "text"
+						},
+						{
+							"key": "user",
+							"value": "Driver1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/drivers/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"drivers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-Accept-Ride-Requests",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI2ODQ0MTk0LCJpYXQiOjE3MjY4MjQ5OTQsImp0aSI6IjE4NDcxMGE1ZTRmNDRmMzI4YjhiMzc5ZDE5MWIxODJlIiwidXNlcl9pZCI6NH0.nEWuJVb0Bez2nFU0oY2g8Y-zgQc8j406PkaB4WAyy-0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "ride_id",
+						"value": "4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "ride_id",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/ride-requests/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"ride-requests",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Driver",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "password",
+							"value": "Testpassword@123",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "driver1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"login",
+						""
+					],
+					"query": [
+						{
+							"key": null,
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

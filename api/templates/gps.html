@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ride Booking with Live Location</title>
+</head>
+<body>
+    <p>Fetching your location...</p>
+    <script>
+        const socket = new WebSocket('ws://127.0.0.1:8000/ws/location/');
+
+        socket.onopen = function() {
+            console.log('WebSocket connection established');
+            getLocationAndSend();
+        };
+
+        socket.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            console.log('Location update response:', data);
+        };
+
+        socket.onclose = function() {
+            console.log('WebSocket connection closed');
+        };
+        socket.onerror = function(error) {
+            console.error("WebSocket error:", error);
+        };
+
+
+        function getLocationAndSend() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(sendPositionToBackend);
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function sendPositionToBackend(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            console.log("Sending location via WebSocket:", latitude, longitude);
+
+            socket.send(JSON.stringify({
+                'latitude': latitude,
+                'longitude': longitude
+            }));
+        }
+        setInterval(getLocationAndSend, 1000);
+    </script>
+</body>
+</html>
